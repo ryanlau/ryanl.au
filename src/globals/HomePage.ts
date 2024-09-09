@@ -1,4 +1,5 @@
 import { lexicalHTML } from '@payloadcms/richtext-lexical'
+import { revalidateTag } from 'next/cache'
 import { GlobalConfig } from 'payload'
 
 export const HomePage: GlobalConfig = {
@@ -38,4 +39,11 @@ export const HomePage: GlobalConfig = {
     },
     lexicalHTML('body', { name: 'body_html' }),
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('home')
+      },
+    ],
+  },
 }

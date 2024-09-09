@@ -1,12 +1,22 @@
+import dynamic from 'next/dynamic'
+import { unstable_cache } from 'next/cache'
+
 import config from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
-import dynamic from 'next/dynamic'
 
 const ProjectsComponent = dynamic(() => import('@/components/Projects'), { ssr: false })
 
-export default async function ProjectsPage() {
-  const payload = await getPayloadHMR({ config })
-  const result = await payload.find({ collection: 'projects' })
+const getData = unstable_cache(
+  async () => {
+    const payload = await getPayloadHMR({ config })
+    return await payload.find({ collection: 'projects' })
+  },
+  [],
+  { tags: ['projects'] },
+)
 
-  return <ProjectsComponent projects={result.docs}></ProjectsComponent>
+export default async function ProjectsPage() {
+  const data = await getData()
+
+  return <ProjectsComponent projects={data.docs}></ProjectsComponent>
 }

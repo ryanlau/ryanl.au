@@ -1,4 +1,5 @@
 import { lexicalHTML } from '@payloadcms/richtext-lexical'
+import { revalidateTag } from 'next/cache'
 import type { CollectionConfig } from 'payload'
 
 export const Projects: CollectionConfig = {
@@ -32,4 +33,11 @@ export const Projects: CollectionConfig = {
     lexicalHTML('title', { name: 'title_html' }),
     lexicalHTML('description', { name: 'description_html' }),
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('projects')
+      },
+    ],
+  },
 }
