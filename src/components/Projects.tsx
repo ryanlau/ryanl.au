@@ -31,7 +31,6 @@ export default function ProjectsComponent({ projects }: ProjectsComponentProps) 
         <div className="flex grow flex-col space-y-8 px-4">
           {projects.map((project: ProjectPayloadType) => {
             const thumbnail = project.thumbnail as MediaPayloadType
-
             return (
               <motion.div
                 className="flex flex-col space-y-2"
@@ -47,7 +46,7 @@ export default function ProjectsComponent({ projects }: ProjectsComponentProps) 
                       <Image
                         alt={thumbnail.alt}
                         fill
-                        src={thumbnail.url!}
+                        src={`${process.env.NEXT_PUBLIC_S3_URL_PROTOCOL}://${process.env.NEXT_PUBLIC_S3_URL_HOSTNAME}/${thumbnail.filename!}`}
                         className="rounded-sm object-cover"
                       ></Image>
                     </AspectRatio>
