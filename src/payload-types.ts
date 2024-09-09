@@ -121,6 +121,7 @@ export interface Project {
   }
   url: string
   github?: string | null
+  date: string
   title_html?: string | null
   description_html?: string | null
   updatedAt: string

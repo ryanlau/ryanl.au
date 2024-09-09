@@ -30,6 +30,18 @@ export const Projects: CollectionConfig = {
       name: 'github',
       type: 'text',
     },
+    {
+      name: 'date',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'monthOnly',
+          displayFormat: 'MMMM yyyy',
+        },
+        description: 'Used solely for ordering',
+      },
+      required: true,
+    },
     lexicalHTML('title', { name: 'title_html' }),
     lexicalHTML('description', { name: 'description_html' }),
   ],

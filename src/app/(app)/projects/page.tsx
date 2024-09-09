@@ -9,7 +9,7 @@ const ProjectsComponent = dynamic(() => import('@/components/Projects'), { ssr: 
 const getData = unstable_cache(
   async () => {
     const payload = await getPayloadHMR({ config })
-    return await payload.find({ collection: 'projects' })
+    return await payload.find({ collection: 'projects', pagination: false, sort: '-date' })
   },
   [],
   { tags: ['projects'] },
