@@ -51,5 +51,10 @@ export const Projects: CollectionConfig = {
         revalidateTag('projects')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('projects')
+      },
+    ],
   },
 }
