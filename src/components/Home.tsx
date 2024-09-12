@@ -49,7 +49,7 @@ export default function HomeComponent({
           {links.map((link) => (
             <motion.p variants={variants} key={link.id}>
               <Link
-                className="font-semibold	text-gray-400	underline underline-offset-4 transition-colors hover:text-inherit"
+                className="font-semibold text-gray-400 underline underline-offset-4 transition-colors hover:text-inherit"
                 href={link.href}
               >
                 {link.text}
