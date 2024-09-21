@@ -43,7 +43,11 @@ export default function HomeComponent({
           {title}
         </motion.p>
 
-        <motion.p variants={variants} dangerouslySetInnerHTML={{ __html: body_html! }} />
+        <motion.p
+          className="[&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4"
+          variants={variants}
+          dangerouslySetInnerHTML={{ __html: body_html! }}
+        />
 
         <div className="flex space-x-3">
           {links.map((link) => (

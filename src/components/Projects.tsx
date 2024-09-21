@@ -53,9 +53,12 @@ export default function ProjectsComponent({ projects }: ProjectsComponentProps) 
                   </div>
                 </Link>
                 <div className="space-y-1">
-                  <p dangerouslySetInnerHTML={{ __html: project.title_html! }} />
                   <p
-                    className="text-gray-400"
+                    className="[&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4"
+                    dangerouslySetInnerHTML={{ __html: project.title_html! }}
+                  />
+                  <p
+                    className="text-gray-400 [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-4"
                     dangerouslySetInnerHTML={{ __html: project.description_html! }}
                   />
                 </div>
